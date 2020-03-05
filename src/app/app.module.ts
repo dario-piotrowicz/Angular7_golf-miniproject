@@ -8,8 +8,10 @@ import { CourseOverviewComponent } from './components/course-overview/course-ove
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
-import { StoreModule, Store } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { CourseReducer } from './store/course.reducer';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CourseReducer } from './store/course.reducer';
     AppRoutingModule,
     StoreModule.forRoot({
       course: CourseReducer
-    })
+    }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ export interface Player {
     name: string;
     handicap: number;
     strokes: Strokes[];
-};
+}
 
 export interface Strokes {
     holeNumber: number;

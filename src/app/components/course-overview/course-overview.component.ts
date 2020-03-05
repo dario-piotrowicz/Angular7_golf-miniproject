@@ -19,6 +19,7 @@ export class CourseOverviewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>) {
     this.course$ = store.select('course');
+    this.course$.subscribe( change => console.log('NGRX CHANGE', change ) );
    }
 
   ngOnInit() {
