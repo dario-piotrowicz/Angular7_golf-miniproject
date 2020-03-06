@@ -1,0 +1,9 @@
+<ng-container *ngIf="course">
+<h3>--- table header ---</h3>
+<hr>
+<div *ngFor="let player of course.players">
+  <app-overview-item  [player]="player">
+  </app-overview-item>
+  <hr>
+</div>
+</ng-container>

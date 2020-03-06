@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CourseOverviewComponent implements OnInit {
 
-  private course$: Observable<Course>;
+  public course$: Observable<Course>;
   private currentCourse: Course = null;
   private routeCourseId: string = null;
 
@@ -34,7 +34,7 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   private redirectIfIncorrectCourseId(): void {
-    if ( this.currentCourse && this.currentCourse.id!==this.routeCourseId) {
+    if ( this.currentCourse && this.currentCourse.id !== this.routeCourseId) {
       // TODO: handle this better if there will be time, not it simply redirects to 404
       this.router.navigate(['/404']);
     }

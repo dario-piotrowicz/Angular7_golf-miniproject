@@ -1,0 +1,8 @@
+<h2>
+ {{ (course$ | async).name }}
+</h2>
+<app-overview-table [course]="course$ | async">
+</app-overview-table>
+<br>
+<br>
+<button routerLink="editplayer/"> ADD PLLAYER </button>
