@@ -4,7 +4,21 @@
 
 <br><br><br>
 
-<label>Player Name:</label>
-<input type="text" id="player-name" [(ngModel)]="playerName">
-<br><br>
-<button (click)="addPlayer()">Add Player</button>
+<form [formGroup]="form">
+  <div class="form-input-div">
+    <label>Name: </label>
+    <input formControlName="name"/>
+  </div>
+  <div class="form-input-div">
+    <label>Handicap: </label>
+    <input formControlName="handicap"/>
+  </div>
+  <div formGroupName="holes">
+    <div *ngFor="let holeControlName of holesFormControlNames" class="form-input-div">
+      <label>{{holeControlName}}: </label>
+      <input formControlName="{{holeControlName}}"/>
+    </div>
+  </div>
+</form>
+<br>
+<button (click)="addPlayer()" [disabled]="!form.valid">Add Player</button>

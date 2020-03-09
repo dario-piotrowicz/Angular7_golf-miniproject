@@ -4,7 +4,11 @@ import * as GolfActions from './golf.actions';
 const initialCourse: Course = {
     id: '18A',
     name: 'Standard 18 Course',
-    holes: [],
+    holes: [
+        {idx: 1, number: 1, par: 5 },
+        {idx: 2, number: 2, par: 3 },
+        {idx: 3, number: 3, par: 1 }
+    ],
     players: []
 };
 
