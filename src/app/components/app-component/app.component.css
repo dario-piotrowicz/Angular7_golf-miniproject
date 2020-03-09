@@ -1,12 +1,19 @@
-.logo {
-    top: 0px;
+#main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#logo {
     text-align: center;
     width: 100%;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0px;
+#content {
+    flex: 1;
+}
+
+#footer {
     width: 100%;
     text-align: center;
 }
