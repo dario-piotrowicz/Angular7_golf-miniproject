@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Player } from 'src/app/models/player.model';
 
 @Component({
@@ -6,13 +6,8 @@ import { Player } from 'src/app/models/player.model';
   templateUrl: './overview-item.component.html',
   styleUrls: ['./overview-item.component.css']
 })
-export class OverviewItemComponent implements OnInit {
+export class OverviewItemComponent {
 
   @Input() player: Player;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

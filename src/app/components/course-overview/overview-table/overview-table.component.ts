@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
 
 @Component({
@@ -6,13 +6,8 @@ import { Course } from 'src/app/models/course.model';
   templateUrl: './overview-table.component.html',
   styleUrls: ['./overview-table.component.css']
 })
-export class OverviewTableComponent implements OnInit {
+export class OverviewTableComponent {
 
   @Input() course: Course;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

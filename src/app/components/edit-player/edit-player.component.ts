@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Player } from 'src/app/models/player.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
   templateUrl: './edit-player.component.html',
   styleUrls: ['./edit-player.component.css']
 })
-export class EditPlayerComponent implements OnInit {
+export class EditPlayerComponent {
 
   public courseId: string;
   public playerName: string;
@@ -48,9 +48,6 @@ export class EditPlayerComponent implements OnInit {
       handicap: ['', Validators.required],
       holes: this.holesFormGroup
     });
-  }
-
-  ngOnInit() {
   }
 
   public addPlayer(): void {
