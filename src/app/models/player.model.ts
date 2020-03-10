@@ -4,6 +4,7 @@ export interface Player {
     handicap: number;
     strokes: number[];
     // strokes: Strokes[];
+    score?: number;
 }
 
 // export interface Strokes {

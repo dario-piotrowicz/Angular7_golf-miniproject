@@ -7,15 +7,15 @@
 <form [formGroup]="form">
   <div class="form-input-div">
     <label>Name: </label>
-    <input formControlName="name"/>
+    <input [formControlName]="nameFormControlName"/>
   </div>
   <div class="form-input-div">
     <label>Handicap: </label>
-    <input formControlName="handicap"/>
+    <input [formControlName]="handicapFormControlName"/>
   </div>
-  <div formGroupName="holes">
-    <div *ngFor="let holeControlName of holesFormControlNames" class="form-input-div">
-      <label>{{holeControlName}}: </label>
+  <div [formGroupName]="holesFormGroupName">
+    <div *ngFor="let holeControlName of holesFormControlNames; let i = index" class="form-input-div">
+      <label>Hole {{i+1}}: </label>
       <input formControlName="{{holeControlName}}"/>
     </div>
   </div>
