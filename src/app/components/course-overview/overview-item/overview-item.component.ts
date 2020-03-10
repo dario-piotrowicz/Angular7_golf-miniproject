@@ -9,5 +9,6 @@ import { Player } from 'src/app/models/player.model';
 export class OverviewItemComponent {
 
   @Input() player: Player;
+  @Input() showScores = false;
 
 }

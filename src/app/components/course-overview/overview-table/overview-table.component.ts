@@ -9,5 +9,6 @@ import { Course } from 'src/app/models/course.model';
 export class OverviewTableComponent {
 
   @Input() course: Course;
+  @Input() showScores = false;
 
 }

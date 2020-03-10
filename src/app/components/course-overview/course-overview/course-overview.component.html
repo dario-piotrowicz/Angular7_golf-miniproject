@@ -1,8 +1,9 @@
 <h2>
  {{ (course$ | async).name }}
 </h2>
-<app-overview-table [course]="course$ | async">
+<app-overview-table [course]="course$ | async" [showScores]="showScores">
 </app-overview-table>
 <br>
 <br>
 <button routerLink="editplayer/"> ADD PLLAYER </button>
+<button *ngIf="(course$ | async).players.length>0 && !showScores" (click)="showScores = true;"> SCORES </button>
