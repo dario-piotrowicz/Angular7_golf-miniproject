@@ -20,7 +20,7 @@ export class ScoreService {
       if ( strokes === par - 2 ) {
         return 4;
       }
-      if( strokes === par - 1 ){
+      if ( strokes === par - 1 ){
         return 3;
       }
     }
