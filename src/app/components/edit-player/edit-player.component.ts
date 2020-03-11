@@ -6,6 +6,8 @@ import * as GolfActions from '../../store/golf.actions';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
+import { ScoreService } from 'src/app/services/score/score.service';
+import { Hole } from 'src/app/models/hole.model';
 
 @Component({
   selector: 'app-edit-player',
@@ -15,6 +17,7 @@ import { take } from 'rxjs/operators';
 export class EditPlayerComponent {
 
   public courseId: string;
+  private courseHoles: Hole[];
   public playerName: string;
   public form: FormGroup;
   public holesFormGroup: FormGroup;
@@ -24,9 +27,13 @@ export class EditPlayerComponent {
   public handicapFormControlName = 'handicap';
   public holesFormGroupName = 'holes';
 
-  constructor(private store: Store<AppState>, private router: Router, private fb: FormBuilder) {
+  constructor( private store: Store<AppState>,
+               private router: Router,
+               private fb: FormBuilder,
+               private scoreService: ScoreService) {
     store.select('course').pipe(take(1)).subscribe( course => {
       this.courseId = course.id;
+      this.courseHoles = course.holes;
       this.buildForm(course.holes.length);
     });
   }
@@ -39,7 +46,7 @@ export class EditPlayerComponent {
     this.holesFormControlNames.forEach( hFormCname => {
       strokes.push(this.holesFormGroup.controls[hFormCname].value);
     });
-    const score = 0; // TODO: Compute score
+    const score = this.scoreService.computeScore(strokes, handicap, this.courseHoles);
     const newPlayer: Player = { id, name, handicap, strokes, score };
     this.store.dispatch(
       new GolfActions.AddPlayer(newPlayer)
