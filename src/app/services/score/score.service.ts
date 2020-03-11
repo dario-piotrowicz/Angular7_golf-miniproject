@@ -11,17 +11,15 @@ export class ScoreService {
       return 2;
     }
     if ( strokes < par ) {
-      if ( strokes <= par - 4 ){
-        return 6;
-      }
-      if ( strokes === par - 3 ) {
-        return 5;
-      }
-      if ( strokes === par - 2 ) {
-        return 4;
-      }
-      if ( strokes === par - 1 ){
-        return 3;
+      switch ( strokes ) {
+        case par - 3 :
+          return 5;
+        case par - 2:
+          return 4;
+        case par - 1:
+          return 3;
+        default:
+          return 6;
       }
     }
     if ( strokes === par + 1 ) {
