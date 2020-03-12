@@ -13,6 +13,7 @@ import { StoreService } from './store.service';
     StoreModule.forRoot({
       course: CourseReducer
     })
-  ]
+  ],
+  providers: [ StoreService ]
 })
 export class GolfStoreModule { }
