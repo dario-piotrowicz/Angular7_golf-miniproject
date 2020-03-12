@@ -13,6 +13,8 @@ import { OverviewTableComponent } from './components/course-overview/overview-ta
 import { OverviewItemComponent } from './components/course-overview/overview-item/overview-item.component';
 import { GolfStoreModule } from './store/golf-store.module';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,10 @@ import { GolfStoreModule } from './store/golf-store.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    GolfStoreModule
+    GolfStoreModule,
+    StoreDevtoolsModule.instrument(
+      { maxAge: 50 }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
