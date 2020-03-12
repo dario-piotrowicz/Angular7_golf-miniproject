@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { Player } from 'src/app/models/player.model';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.state';
-import * as GolfActions from '../../store/golf.actions';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { ScoreService } from 'src/app/services/score/score.service';
 import { Hole } from 'src/app/models/hole.model';
+import { StoreService } from 'src/app/store/store.service';
 
 @Component({
   selector: 'app-edit-player',
@@ -27,11 +25,11 @@ export class EditPlayerComponent {
   public handicapFormControlName = 'handicap';
   public holesFormGroupName = 'holes';
 
-  constructor( private store: Store<AppState>,
+  constructor( private store: StoreService,
                private router: Router,
                private fb: FormBuilder,
                private scoreService: ScoreService) {
-    store.select('course').pipe(take(1)).subscribe( course => {
+    store.getState().pipe(take(1)).subscribe( course => {
       this.courseId = course.id;
       this.courseHoles = course.holes;
       this.buildForm(course.holes.length);
@@ -48,9 +46,7 @@ export class EditPlayerComponent {
     });
     const score = this.scoreService.computeScore(strokes, handicap, this.courseHoles);
     const newPlayer: Player = { id, name, handicap, strokes, score };
-    this.store.dispatch(
-      new GolfActions.AddPlayer(newPlayer)
-    );
+    this.store.addPlayer(newPlayer);
     this.router.navigate(['/courseoverview/', this.courseId]);
   }
 

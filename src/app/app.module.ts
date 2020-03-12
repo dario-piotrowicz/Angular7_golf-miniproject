@@ -8,12 +8,10 @@ import { CourseOverviewComponent } from './components/course-overview/course-ove
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
-import { StoreModule } from '@ngrx/store';
-import { CourseReducer } from './store/course.reducer';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverviewTableComponent } from './components/course-overview/overview-table/overview-table.component';
 import { OverviewItemComponent } from './components/course-overview/overview-item/overview-item.component';
+import { GolfStoreModule } from './store/golf-store.module';
 
 @NgModule({
   declarations: [
@@ -28,11 +26,9 @@ import { OverviewItemComponent } from './components/course-overview/overview-ite
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      course: CourseReducer
-    }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GolfStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

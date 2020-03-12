@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from 'src/app/store/app.state';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { StoreService } from 'src/app/store/store.service';
 
 @Component({
   selector: 'app-course-overview',
@@ -19,8 +18,8 @@ export class CourseOverviewComponent implements OnInit {
 
   public showScores = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>) {
-    this.course$ = store.select('course');
+  constructor(private route: ActivatedRoute, private router: Router, private store: StoreService) {
+    this.course$ = store.getState();
     this.course$.subscribe( change => console.log('NGRX CHANGE', change ) );
    }
 
