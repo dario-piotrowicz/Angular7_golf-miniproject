@@ -20,7 +20,6 @@ export class CourseOverviewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private store: StoreService) {
     this.course$ = store.getState();
-    this.course$.subscribe( change => console.log('NGRX CHANGE', change ) );
    }
 
   ngOnInit() {
