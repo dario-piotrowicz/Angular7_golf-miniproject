@@ -33,4 +33,10 @@ export class StoreService {
     );
   }
 
+  public editPlayer(player: Player): void {
+    this.store.dispatch(
+      new GolfActions.EditPlayer(player)
+    );
+  }
+
 }

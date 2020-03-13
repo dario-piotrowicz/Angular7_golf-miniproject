@@ -11,4 +11,5 @@ export class OverviewItemComponent {
   @Input() player: Player;
   @Input() showScores = false;
   @Output() deletePlayer = new EventEmitter<string>();
+  @Output() editPlayer = new EventEmitter<string>();
 }

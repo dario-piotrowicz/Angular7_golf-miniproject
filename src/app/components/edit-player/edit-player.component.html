@@ -1,4 +1,4 @@
-<button routerLink="/courseoverview/{{courseId}}">
+<button routerLink="/courseoverview/{{course.id}}">
   BACK
 </button>
 
@@ -21,4 +21,6 @@
   </div>
 </form>
 <br>
-<button (click)="addPlayer()" [disabled]="!form.valid">Add Player</button>
+<button *ngIf="!existingPlayerId" (click)="addPlayer()" [disabled]="!form.valid">Add Player</button>
+<br>
+<button *ngIf="existingPlayerId" (click)="editPlayer()" [disabled]="!form.valid">Edit Player</button>

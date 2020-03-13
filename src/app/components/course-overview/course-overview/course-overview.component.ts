@@ -4,6 +4,7 @@ import { Course } from 'src/app/models/course.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/app/store/store.service';
+import { Player } from 'src/app/models/player.model';
 
 @Component({
   selector: 'app-course-overview',
@@ -35,6 +36,10 @@ export class CourseOverviewComponent implements OnInit {
 
   public deletePlayer(id: string): void {
     this.store.deletePlayer(id);
+  }
+
+  public editPlayer(id: string): void{
+    this.router.navigate(['editplayer/', { playerId: id }], { relativeTo: this.route });
   }
 
   private redirectIfIncorrectCourseId(): void {

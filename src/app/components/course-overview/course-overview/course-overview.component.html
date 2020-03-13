@@ -1,7 +1,9 @@
 <h2>
  {{ (course$ | async).name }}
 </h2>
-<app-overview-table [course]="course$ | async" [showScores]="showScores" (deletePlayer)="deletePlayer($event)">
+<app-overview-table [course]="course$ | async" [showScores]="showScores"
+                    (deletePlayer)="deletePlayer($event)"
+                    (editPlayer)="editPlayer($event)">
 </app-overview-table>
 <br>
 <br>
