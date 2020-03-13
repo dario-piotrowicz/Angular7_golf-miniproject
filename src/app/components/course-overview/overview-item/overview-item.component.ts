@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Player } from 'src/app/models/player.model';
 
 @Component({
@@ -10,5 +10,5 @@ export class OverviewItemComponent {
 
   @Input() player: Player;
   @Input() showScores = false;
-
+  @Output() deletePlayer = new EventEmitter<string>();
 }

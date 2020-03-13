@@ -27,4 +27,10 @@ export class StoreService {
     );
   }
 
+  public deletePlayer(playerId: string): void {
+    this.store.dispatch(
+      new GolfActions.DeletePlayer(playerId)
+    );
+  }
+
 }

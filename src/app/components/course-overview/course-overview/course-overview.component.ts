@@ -34,6 +34,10 @@ export class CourseOverviewComponent implements OnInit {
     });
   }
 
+  public deletePlayer(id: string): void {
+    this.store.deletePlayer(id);
+  }
+
   private redirectIfIncorrectCourseId(): void {
     if ( this.currentCourse && this.currentCourse.id !== this.routeCourseId) {
       // TODO: handle this better if there will be time, not it simply redirects to 404

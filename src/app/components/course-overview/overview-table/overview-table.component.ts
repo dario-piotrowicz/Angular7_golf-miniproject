@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
 
 @Component({
@@ -10,5 +10,5 @@ export class OverviewTableComponent {
 
   @Input() course: Course;
   @Input() showScores = false;
-
+  @Output() deletePlayer = new EventEmitter<string>();
 }

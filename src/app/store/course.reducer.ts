@@ -21,8 +21,9 @@ export function CourseReducer(state: Course = initialCourse, action: GolfActions
             // in the course edit the player with the same id as the one specified
             return state;
         case GolfActions.DELETE_PLAYER:
-            // from the course remove the player with the specified id
-            return state;
+            const playerId = action.payload;
+            const newPlayersList = state.players.filter( (player) => player.id !== playerId );
+            return { ...state, players: newPlayersList };
         default:
             return state;
     }
