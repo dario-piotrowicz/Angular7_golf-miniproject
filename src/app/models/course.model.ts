@@ -6,4 +6,4 @@ export interface Course {
     name: string;
     holes: Hole[];
     players: Player[];
-};
+}

@@ -14,7 +14,7 @@ const initialCourse: Course = {
 
 // TO DO :  IMPLEMENT PROPER REDUCER FUNCTIONALITIES
 export function CourseReducer(state: Course = initialCourse, action: GolfActions.Actions) {
-    switch(action.type) {
+    switch (action.type) {
         case GolfActions.ADD_PLAYER:
             return { ...state , players: [...state.players, action.payload] };
         case GolfActions.EDIT_PLAYER:
