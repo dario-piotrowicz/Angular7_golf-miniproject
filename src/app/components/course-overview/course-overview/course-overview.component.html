@@ -1,11 +1,21 @@
 <h2>
  {{ (course$ | async).name }}
 </h2>
+
 <app-overview-table [course]="course$ | async" [showScores]="showScores"
                     (deletePlayer)="deletePlayer($event)"
                     (editPlayer)="editPlayer($event)">
 </app-overview-table>
-<br>
-<br>
-<button routerLink="editplayer/"> ADD PLLAYER </button>
-<button *ngIf="(course$ | async).players.length>0 && !showScores" (click)="showScores = true;"> SCORES </button>
+
+<button mat-raised-button
+        color="primary"
+        routerLink="editplayer/">
+        Add Player
+</button>
+
+<button *ngIf="(course$ | async).players.length>0 && !showScores"
+        mat-raised-button
+        color="primary"
+        (click)="showScores = true;">
+        Show Scores
+</button>

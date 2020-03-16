@@ -1,4 +1,7 @@
-.form-input-div {
+mat-form-field {
+    width: 80%;
+}
+
+button.bottom {
     margin-top: 20px;
-    margin-bottom: 20px;
 }

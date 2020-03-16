@@ -5,7 +5,7 @@ import { CourseOverviewComponent } from './components/course-overview/course-ove
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
-const routes: Routes = [ 
+const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'courseoverview/:courseId', component: CourseOverviewComponent },
   { path: 'courseoverview/:courseId/editplayer', component: EditPlayerComponent },

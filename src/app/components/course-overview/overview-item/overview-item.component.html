@@ -1,9 +1,11 @@
 <div>
-  <button (click)="deletePlayer.emit(player.id)">
-    Delete
+  <button mat-mini-fab
+          (click)="deletePlayer.emit(player.id)">
+    <mat-icon>delete</mat-icon>
   </button>
-  <button (click)="editPlayer.emit(player.id)">
-    Edit
+  <button mat-mini-fab
+          (click)="editPlayer.emit(player.id)">
+    <mat-icon>edit</mat-icon>
   </button>
   <p>
     Name: {{player.name}}

@@ -1,26 +1,58 @@
-<button routerLink="/courseoverview/{{course.id}}">
-  BACK
+<button mat-fab routerLink="/courseoverview/{{course.id}}">
+  <mat-icon>arrow_back</mat-icon>
 </button>
 
-<br><br><br>
-
 <form [formGroup]="form">
-  <div class="form-input-div">
-    <label>Name: </label>
-    <input [formControlName]="nameFormControlName"/>
-  </div>
-  <div class="form-input-div">
-    <label>Handicap: </label>
-    <input [formControlName]="handicapFormControlName"/>
-  </div>
+  <mat-form-field appearance="standard">
+    <mat-label>Name</mat-label>
+    <input [formControlName]="nameFormControlName" 
+           matInput
+           placeholder="A name or nickname for the player"/>
+    <mat-error>
+      Please provide a name for the player
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Handicap</mat-label>
+    <input [formControlName]="handicapFormControlName"
+           matInput
+           placeholder="The handicap for the player"/>
+    <mat-error>
+      Please provide an usigned number greater than or equal zero
+    </mat-error>
+  </mat-form-field>
   <div [formGroupName]="holesFormGroupName">
-    <div *ngFor="let holeControlName of holesFormControlNames; let i = index" class="form-input-div">
-      <label>Hole {{i+1}}: </label>
-      <input formControlName="{{holeControlName}}"/>
-    </div>
+    <mat-form-field *ngFor="let holeControlName of holesFormControlNames; let i = index">
+      <mat-label>
+        Hole {{i+1}}
+      </mat-label>
+      <input [formControlName]="holeControlName"
+             matInput
+             placeholder="How many strokes did the player took for hole number {{i+1}}"/>
+      <mat-error *ngIf="holesFormGroup.controls[holeControlName].hasError('required')">
+        This field is required, please provide a value for it
+      </mat-error>
+      <mat-error *ngIf="holesFormGroup.controls[holeControlName].hasError('pattern')">
+        Please provide an unsigned number greater than or equal to one
+      </mat-error>
+    </mat-form-field>
   </div>
 </form>
-<br>
-<button *ngIf="!existingPlayerId" (click)="addPlayer()" [disabled]="!form.valid">Add Player</button>
-<br>
-<button *ngIf="existingPlayerId" (click)="editPlayer()" [disabled]="!form.valid">Edit Player</button>
+
+<button *ngIf="!existingPlayerId"
+        class="bottom"
+        mat-raised-button
+        color="primary"
+        (click)="addPlayer()"
+        [disabled]="!form.valid">
+        Add Player
+</button>
+
+<button *ngIf="existingPlayerId"
+        class="bottom"
+        mat-raised-button
+        color="primary"
+        (click)="editPlayer()"
+        [disabled]="!form.valid">
+        Edit Player
+</button>

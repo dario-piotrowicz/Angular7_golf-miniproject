@@ -1,10 +1,12 @@
 <ng-container *ngIf="course">
-<h3>--- table header ---</h3>
-<hr>
-<div *ngFor="let player of course.players">
-  <app-overview-item  [player]="player" [showScores]="showScores" (deletePlayer)="deletePlayer.emit($event)"
-  (editPlayer)="editPlayer.emit($event)">
-  </app-overview-item>
-  <hr>
-</div>
+  <h3>--- table header ---</h3>
+  <mat-divider></mat-divider>
+  <div *ngFor="let player of course.players">
+    <app-overview-item  [player]="player"
+                        [showScores]="showScores"
+                        (deletePlayer)="deletePlayer.emit($event)"
+                        (editPlayer)="editPlayer.emit($event)">
+    </app-overview-item>
+    <mat-divider></mat-divider>
+  </div>
 </ng-container>
