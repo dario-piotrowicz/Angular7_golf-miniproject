@@ -2,12 +2,11 @@ export interface Player {
     id: string;
     name: string;
     handicap: number;
-    strokes: number[];
-    // strokes: Strokes[];
+    strokes: Stroke[];
     score?: number;
 }
 
-// export interface Strokes {
-//    holeNumber: number;
-//    numberOfStrokes: number;
-// }
+export interface Stroke {
+    holeNumber: number;
+    numberOfStrokes: number;
+}

@@ -15,9 +15,9 @@
   </p>
   <p>
     Stokes: [
-    <ng-container *ngFor="let stroke of player.strokes, let index = index">
+    <ng-container *ngFor="let stroke of strokesToDisplay, let index = index">
       {{ stroke }}
-      <label *ngIf="index<player.strokes.length-1">,
+      <label *ngIf="index<strokesToDisplay.length-1">,
       </label>
     </ng-container>
     ]

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hole } from '../../models/hole.model';
+import { Stroke } from 'src/app/models/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,10 @@ export class ScoreService {
     return 0;
   }
 
-  public computeScore(playerStrokes: number[], playerHandicap: number, courseHoles: Hole[]): number {
-    if ( !playerStrokes || !courseHoles || playerStrokes.length !== courseHoles.length) {
+  public computeScore( playerStrokes: Stroke[],
+                       playerHandicap: number,
+                       courseHoles: Hole[]): number {
+    if ( !courseHoles ) {
       return -1;
     }
     let score = 0;
@@ -37,9 +40,12 @@ export class ScoreService {
       const division = Math.floor( playerHandicap / courseHoles.length );
       const modulo = playerHandicap % courseHoles.length;
       return hole.par + division + (hole.idx <= modulo ? 1 : 0 );
-    }
+    };
     courseHoles.forEach( (hole, index) => {
-      score += this.computeStablefordPoints(playerStrokes[index], computePar(hole));
+      const stroke = playerStrokes.find( s => s.holeNumber === hole.number );
+      if ( stroke ) {
+        score += this.computeStablefordPoints(stroke.numberOfStrokes, computePar(hole));
+      }
     });
     return score;
   }

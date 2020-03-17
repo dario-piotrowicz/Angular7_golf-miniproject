@@ -29,10 +29,7 @@
       <input [formControlName]="holeControlName"
              matInput
              placeholder="How many strokes did the player took for hole number {{i+1}}"/>
-      <mat-error *ngIf="holesFormGroup.controls[holeControlName].hasError('required')">
-        This field is required, please provide a value for it
-      </mat-error>
-      <mat-error *ngIf="holesFormGroup.controls[holeControlName].hasError('pattern')">
+      <mat-error>
         Please provide an unsigned number greater than or equal to one
       </mat-error>
     </mat-form-field>

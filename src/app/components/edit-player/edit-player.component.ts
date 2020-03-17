@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from 'src/app/models/player.model';
+import { Player, Stroke } from 'src/app/models/player.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
@@ -60,9 +60,15 @@ export class EditPlayerComponent implements OnInit {
     const id = `player_${new Date().getTime()}`;
     const name = this.form.controls[this.nameFormControlName].value;
     const handicap = this.form.controls[this.handicapFormControlName].value ? this.form.controls[this.handicapFormControlName].value : 0;
-    const strokes = [];
-    this.holesFormControlNames.forEach( hFormCname => {
-      strokes.push(this.holesFormGroup.controls[hFormCname].value);
+    const strokes: Stroke[] = [];
+    this.holesFormControlNames.forEach( (hFormCname, i) => {
+      const strkVal = this.holesFormGroup.controls[hFormCname].value;
+      if ( strkVal ) {
+        strokes.push({
+          holeNumber: i + 1,
+          numberOfStrokes: strkVal
+        });
+      }
     });
     const score = this.scoreService.computeScore(strokes, handicap, this.course.holes);
     const player: Player = { id, name, handicap, strokes, score };
@@ -75,18 +81,21 @@ export class EditPlayerComponent implements OnInit {
     this.router.navigate(['/courseoverview/', this.course.id]);
   }
 
-  private buildForm(numOfHoles: number, defaultName: string = '', defaultHandicap: string = '', defaultHoles: string[] = null): void {
+  private buildForm( numOfHoles: number,
+                     defaultName: string = '',
+                     defaultHandicap: string = '',
+                     defaultStrokes: Stroke[] = null ): void {
     const holeControls = [];
     this.holesFormControlNames = [];
     const holeControlValidators = [
-      Validators.required,
       Validators.pattern(/^\d+$/),
       Validators.min(1)
     ];
     for (let i = 0 ; i < numOfHoles; i++ ) {
       const formControlName = `hole_${ i + 1 }`;
       this.holesFormControlNames.push(formControlName);
-      const defaultValue = ( defaultHoles ? defaultHoles[i] : '' );
+      const stroke = defaultStrokes ? defaultStrokes.find( strk => strk.holeNumber === i + 1 ) : null;
+      const defaultValue = stroke ? stroke.numberOfStrokes : '';
       holeControls[formControlName] = [defaultValue, holeControlValidators ];
     }
     this.holesFormGroup = this.fb.group(holeControls);
@@ -104,7 +113,7 @@ export class EditPlayerComponent implements OnInit {
       const name = originalPlayer.name;
       const handicapStr = originalPlayer.handicap.toString();
       const holesStrs = originalPlayer.strokes.map( (stroke) => stroke.toString() );
-      this.buildForm(numOfHoles, name, handicapStr, holesStrs);
+      this.buildForm(numOfHoles, name, handicapStr, originalPlayer.strokes);
     } else {
       // TODO: handle error greacefully
       this.buildForm(numOfHoles);

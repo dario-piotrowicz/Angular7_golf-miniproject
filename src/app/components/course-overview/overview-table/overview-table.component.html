@@ -3,6 +3,7 @@
   <mat-divider></mat-divider>
   <div *ngFor="let player of course.players">
     <app-overview-item  [player]="player"
+                        [courseHoles]="course.holes"
                         [showScores]="showScores"
                         (deletePlayer)="deletePlayer.emit($event)"
                         (editPlayer)="editPlayer.emit($event)">
