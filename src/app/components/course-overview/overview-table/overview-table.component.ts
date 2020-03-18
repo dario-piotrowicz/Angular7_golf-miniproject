@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
-import { Player } from 'src/app/models/player.model';
 
 @Component({
   selector: 'app-overview-table',

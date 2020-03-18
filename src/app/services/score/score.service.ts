@@ -41,7 +41,7 @@ export class ScoreService {
       const modulo = playerHandicap % courseHoles.length;
       return hole.par + division + (hole.idx <= modulo ? 1 : 0 );
     };
-    courseHoles.forEach( (hole, index) => {
+    courseHoles.forEach( hole => {
       const stroke = playerStrokes.find( s => s.holeNumber === hole.number );
       if ( stroke ) {
         score += this.computeStablefordPoints(stroke.numberOfStrokes, computePar(hole));

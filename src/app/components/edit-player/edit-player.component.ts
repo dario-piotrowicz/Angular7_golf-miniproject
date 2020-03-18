@@ -27,6 +27,8 @@ export class EditPlayerComponent implements OnInit {
 
   public existingPlayerId: string;
 
+  private numberRegexPattern = /^\d+$/;
+
   constructor( private store: StoreService,
                private route: ActivatedRoute,
                private router: Router,
@@ -88,7 +90,7 @@ export class EditPlayerComponent implements OnInit {
     const holeControls = [];
     this.holesFormControlNames = [];
     const holeControlValidators = [
-      Validators.pattern(/^\d+$/),
+      Validators.pattern(this.numberRegexPattern),
       Validators.min(1)
     ];
     for (let i = 0 ; i < numOfHoles; i++ ) {
@@ -101,7 +103,7 @@ export class EditPlayerComponent implements OnInit {
     this.holesFormGroup = this.fb.group(holeControls);
     const formGroup = {};
     formGroup[this.nameFormControlName] = [defaultName, Validators.required];
-    formGroup[this.handicapFormControlName] = [defaultHandicap, Validators.pattern(/^\d+$/)];
+    formGroup[this.handicapFormControlName] = [defaultHandicap, Validators.pattern(this.numberRegexPattern)];
     formGroup[this.holesFormGroupName] = this.holesFormGroup;
     this.form = this.fb.group(formGroup);
   }
@@ -112,7 +114,6 @@ export class EditPlayerComponent implements OnInit {
     if ( originalPlayer ) {
       const name = originalPlayer.name;
       const handicapStr = originalPlayer.handicap.toString();
-      const holesStrs = originalPlayer.strokes.map( (stroke) => stroke.toString() );
       this.buildForm(numOfHoles, name, handicapStr, originalPlayer.strokes);
     } else {
       // TODO: handle error greacefully
