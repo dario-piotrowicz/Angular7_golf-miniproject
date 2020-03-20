@@ -1,5 +1,17 @@
 <ng-container *ngIf="course">
   <div id="table-header">
+    <div id="name">
+      Name
+    </div>
+    <div id="handicap">
+      Handicap
+    </div>
+    <div id="strokes">
+      Strokes
+    </div>
+    <div *ngIf="showScores" id="score">
+      Score
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div *ngFor="let player of course.players, let index = index">

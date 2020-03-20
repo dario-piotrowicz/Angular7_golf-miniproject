@@ -13,3 +13,59 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
+#name {
+    font-weight: bold;
+    display: none;
+}
+
+#handicap {
+    font-weight: bold;
+    display: none;
+}
+
+#strokes {
+    font-weight: bold;
+    display: none;
+}
+
+#score {
+    font-weight: bold;
+    display: none;
+}
+
+@media(min-width: 1100px){
+
+    #table-header {
+        padding: 0 20px;
+        display: grid;
+        height: 50px;
+        grid-template-columns: 0.5fr 1fr 0.5fr 5fr 0.2fr;
+        grid-template-rows: 1fr;
+        column-gap: 15px;
+        row-gap: 10px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    #name {
+        display: block;
+        grid-column: 2/3;
+    }
+
+    #handicap {
+        display: block;
+        grid-column: 3/4;
+    }
+
+    #strokes {
+        display: block;
+        grid-column: 4/5;
+    }
+
+    #score {
+        display: block;
+        grid-column: 5/6;
+    }
+
+}
