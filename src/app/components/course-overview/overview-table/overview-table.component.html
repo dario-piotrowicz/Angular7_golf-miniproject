@@ -1,7 +1,8 @@
 <ng-container *ngIf="course">
-  <h3>--- table header ---</h3>
+  <div id="table-header">
+  </div>
   <mat-divider></mat-divider>
-  <div *ngFor="let player of course.players">
+  <div *ngFor="let player of course.players, let index = index">
     <app-overview-item  [player]="player"
                         [courseHoles]="course.holes"
                         [showScores]="showScores"
@@ -9,5 +10,7 @@
                         (editPlayer)="editPlayer.emit($event)">
     </app-overview-item>
     <mat-divider></mat-divider>
+  </div>
+  <div id="table-footer">
   </div>
 </ng-container>

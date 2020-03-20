@@ -1,28 +1,29 @@
-<div>
-  <button mat-mini-fab
-          (click)="deletePlayer.emit(player.id)">
-    <mat-icon>delete</mat-icon>
-  </button>
-  <button mat-mini-fab
+<div id="overview-item">
+  <div id="buttons" class="container">
+    <button id="edit" mat-mini-fab
           (click)="editPlayer.emit(player.id)">
-    <mat-icon>edit</mat-icon>
-  </button>
-  <p>
-    Name: {{player.name}}
-  </p>
-  <p>
-   Handicap: {{ player.handicap }}
-  </p>
-  <p>
-    Stokes: [
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button id="delete" mat-mini-fab
+          (click)="deletePlayer.emit(player.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div id="name" class="container">
+    <b>Name:</b> {{player.name}}
+  </div>
+  <div id="handicap" class="container">
+   <b>Handicap:</b> {{ player.handicap }}
+  </div>
+  <div id="strokes" class="container">
+    <b>Strokes:</b>
     <ng-container *ngFor="let stroke of strokesToDisplay, let index = index">
       {{ stroke }}
       <label *ngIf="index<strokesToDisplay.length-1">,
       </label>
     </ng-container>
-    ]
-  </p>
-  <p *ngIf="showScores">
+  </div>
+  <div *ngIf="showScores" id="score" class="container">
     Score: {{ player.score }}
-  </p>
+  </div>
 </div>

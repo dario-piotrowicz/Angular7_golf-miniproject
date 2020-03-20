@@ -1,0 +1,15 @@
+#table-header, #table-footer {
+    background-color: rgb(84, 84, 247);
+    color: white;
+    height: 30px;
+}
+
+#table-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#table-footer {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

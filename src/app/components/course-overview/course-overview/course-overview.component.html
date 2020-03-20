@@ -1,22 +1,26 @@
-<h2>
- {{ (course$ | async).name }}
-</h2>
+<div id="course-overview-main">
+        <div>
+                <h2>
+                {{ (course$ | async).name }}
+                </h2>
 
-<app-overview-table *ngIf="( course$ | async ).players.length>0"
-                    [course]="course$ | async" [showScores]="showScores"
-                    (deletePlayer)="deletePlayer($event)"
-                    (editPlayer)="editPlayer($event)">
-</app-overview-table>
+                <app-overview-table *ngIf="( course$ | async ).players.length>0"
+                                [course]="course$ | async" [showScores]="showScores"
+                                (deletePlayer)="deletePlayer($event)"
+                                (editPlayer)="editPlayer($event)">
+                </app-overview-table>
 
-<button mat-raised-button
-        color="primary"
-        routerLink="editplayer/">
-        Add Player
-</button>
+                <button mat-raised-button
+                        color="primary"
+                        routerLink="editplayer/">
+                        Add Player
+                </button>
 
-<button *ngIf="(course$ | async).players.length>0 && !showScores"
-        mat-raised-button
-        color="primary"
-        (click)="showScores = true;">
-        Show Scores
-</button>
+                <button *ngIf="(course$ | async).players.length>0 && !showScores"
+                        mat-raised-button
+                        color="primary"
+                        (click)="showScores = true;">
+                        Show Scores
+                </button>
+        </div>
+</div>
