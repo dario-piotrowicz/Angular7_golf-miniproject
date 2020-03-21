@@ -25,7 +25,140 @@ const initialCourse: Course = {
         {idx: 5, number: 17, par: 5 },
         {idx: 11, number: 18, par: 3 }
     ],
-    players: []
+    players: [
+        {
+            id: 'dfgw234dfgdg',
+            name: 'Dario Test 1',
+            handicap: 0,
+            strokes: [
+                {
+                    holeNumber: 2,
+                    numberOfStrokes: 2
+                },
+                {
+                    holeNumber: 3,
+                    numberOfStrokes: 3
+                },
+                {
+                    holeNumber: 4,
+                    numberOfStrokes: 4
+                },
+                {
+                    holeNumber: 5,
+                    numberOfStrokes: 5
+                },
+                {
+                    holeNumber: 6,
+                    numberOfStrokes: 6
+                },
+                {
+                    holeNumber: 7,
+                    numberOfStrokes: 7
+                }
+            ],
+            score: 9
+        },
+        {
+            id: 'dsgdsw234',
+            name: 'Dario Test 2',
+            handicap: 5,
+            strokes: [
+                {
+                    holeNumber: 1,
+                    numberOfStrokes: 10
+                },
+                {
+                    holeNumber: 5,
+                    numberOfStrokes: 7
+                },
+                {
+                    holeNumber: 11,
+                    numberOfStrokes: 2
+                }
+            ],
+            score: 5
+        },
+        {
+            id: 'fdhetyhu',
+            name: 'Dario Test 3',
+            handicap: 10,
+            strokes: [
+                {
+                    holeNumber: 1,
+                    numberOfStrokes: 1
+                },
+                {
+                    holeNumber: 2,
+                    numberOfStrokes: 8
+                },
+                {
+                    holeNumber: 3,
+                    numberOfStrokes: 4
+                },
+                {
+                    holeNumber: 4,
+                    numberOfStrokes: 9
+                },
+                {
+                    holeNumber: 5,
+                    numberOfStrokes: 5
+                },
+                {
+                    holeNumber: 6,
+                    numberOfStrokes: 2
+                },
+                {
+                    holeNumber: 7,
+                    numberOfStrokes: 3
+                },
+                {
+                    holeNumber: 8,
+                    numberOfStrokes: 10
+                },
+                {
+                    holeNumber: 9,
+                    numberOfStrokes: 8
+                },
+                {
+                    holeNumber: 10,
+                    numberOfStrokes: 8
+                },
+                {
+                    holeNumber: 11,
+                    numberOfStrokes: 9
+                },
+                {
+                    holeNumber: 12,
+                    numberOfStrokes: 9
+                },
+                {
+                    holeNumber: 13,
+                    numberOfStrokes: 10
+                },
+                {
+                    holeNumber: 14,
+                    numberOfStrokes: 5
+                },
+                {
+                    holeNumber: 15,
+                    numberOfStrokes: 7
+                },
+                {
+                    holeNumber: 16,
+                    numberOfStrokes: 2
+                },
+                {
+                    holeNumber: 17,
+                    numberOfStrokes: 7
+                },
+                {
+                    holeNumber: 18,
+                    numberOfStrokes: 2
+                },
+            ],
+            score: 27
+        },
+    ]
 };
 
 export function CourseReducer(state: Course = initialCourse, action: GolfActions.Actions) {
