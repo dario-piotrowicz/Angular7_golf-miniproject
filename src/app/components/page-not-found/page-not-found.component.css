@@ -1,3 +1,18 @@
+div {
+    display: grid;
+    height: 70vh;
+    justify-items: center;
+    align-items: center;
+}
+
 img {
-    width: 100%;
+    text-align: center;
+    max-height: 30vh;
+    max-width: 70vh;
+}
+
+@media(min-width: 700px){
+    img {
+        max-height: 70vh;
+    }
 }
