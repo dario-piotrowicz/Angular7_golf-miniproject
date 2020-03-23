@@ -1,4 +1,4 @@
-<button mat-fab routerLink="/courseoverview/{{course.id}}">
+<button mat-fab class="top" routerLink="/courseoverview/{{course.id}}">
   <mat-icon>arrow_back</mat-icon>
 </button>
 
@@ -7,7 +7,7 @@
     <mat-label>Name</mat-label>
     <input [formControlName]="nameFormControlName" 
            matInput
-           placeholder="A name or nickname for the player"/>
+           placeholder="A name for the player"/>
     <mat-error>
       Please provide a name for the player
     </mat-error>
@@ -21,7 +21,7 @@
       Please provide an usigned number greater than or equal zero
     </mat-error>
   </mat-form-field>
-  <div [formGroupName]="holesFormGroupName">
+  <div id="holesFormGroup" [formGroupName]="holesFormGroupName">
     <mat-form-field *ngFor="let holeControlName of holesFormControlNames; let i = index">
       <mat-label>
         Hole {{i+1}}

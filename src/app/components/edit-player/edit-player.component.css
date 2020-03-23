@@ -1,12 +1,47 @@
 form {
-    width: 80%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 mat-form-field {
-    width: 80%;
+    width: 65%;
+    margin: 10px 0;
+}
+
+#holesFormGroup {
+    width: 65%;
+}
+
+#holesFormGroup > mat-form-field {
+    width: 100%;
+}
+
+button.top {
+    margin-bottom: 20px;
 }
 
 button.bottom {
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+@media(max-width: 750px){
+
+    mat-form-field {
+        width: 85%;
+        margin: 20px 0;
+    }
+
+    #holesFormGroup {
+        width: 85%;
+    }
+
+    button.top {
+        margin-bottom: 40px;
+    }
+
+    button.bottom {
+        margin-top: 50px;
+    }
+
 }
