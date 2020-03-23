@@ -74,7 +74,7 @@ export class EditPlayerComponent implements OnInit {
     });
     const score = this.scoreService.computeScore(strokes, handicap, this.course.holes);
     const player: Player = { id, name, handicap, strokes, score };
-    if ( isNewPlayer ){
+    if ( isNewPlayer ) {
       this.store.addPlayer(player);
     } else {
       player.id = this.existingPlayerId;
